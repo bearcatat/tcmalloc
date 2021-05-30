@@ -82,7 +82,7 @@ void *TestTcMallocTime(void *arg)
     return time_res;
 }
 
-void *TestPtMallocTime(void *arg)
+void *TestSysMallocTime(void *arg)
 {
     ThreadArg *t_arg = reinterpret_cast<ThreadArg *>(arg);
     TimeRes *time_res = new TimeRes();
@@ -134,11 +134,12 @@ int main(int argc, char const *argv[])
         arg.size[i] = u(e);
         arg.n_size[i] = s(e);
     }
+    cout<<"One thread test:"<<endl;
     cout << "Tc Malloc: " << *((TimeRes *)TestTcMallocTime((void *)&arg));
-    cout << "Pt Malloc: " << *((TimeRes *)TestPtMallocTime((void *)&arg));
+    cout << "Sys Malloc: " << *((TimeRes *)TestSysMallocTime((void *)&arg));
     delete[] arg.size;
     // return 0;
-    cout << "pthread: " << endl;
+    cout << "Multi-threads test: " << endl;
     assert(false);
     pthread_t tc_tids[ThreadSize];
     pthread_t pt_tids[ThreadSize];
@@ -158,7 +159,7 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < ThreadSize; i++)
     {
         pthread_create(&tc_tids[i], NULL, TestTcMallocTime, (void *)args[i]);
-        pthread_create(&pt_tids[i], NULL, TestPtMallocTime, (void *)args[i]);
+        pthread_create(&pt_tids[i], NULL, TestSysMallocTime, (void *)args[i]);
     }
     TimeRes time_res_tc, time_res_pt;
     for (int i = 0; i < ThreadSize; i++)
