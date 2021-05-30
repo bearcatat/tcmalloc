@@ -13,13 +13,13 @@
 ## 结果
 ### tcmalloc 
 
-The total time of malloc: 30.3419
+The total time of malloc: 30.34s
 
-The total time of free: 18.2506
+The total time of free: 18.25s
 
 ### malloc
 
-The total time of malloc: 91.2974
+The total time of malloc: 91.30s
 
-The total time of free: 12.4449
+The total time of free: 12.44s
 
