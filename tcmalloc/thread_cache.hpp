@@ -141,7 +141,7 @@ namespace tcmalloc
                     if (to_release == 0)
                         to_release = 1;
                     ReleaseToCentralList(free_list_[sc], central_free_lists_[sc], sc, to_release);
-                    int new_max_length = fl.length() - batch_size;
+                    int new_max_length = fl.max_length() - batch_size;
                     if (new_max_length < batch_size)
                     {
                         new_max_length = batch_size;

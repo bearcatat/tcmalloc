@@ -4,7 +4,6 @@
 #include "span.hpp"
 #include "config.hpp"
 #include <mutex>
-#include "static_var.hpp"
 #include "page_heap.hpp"
 #include "size_class.hpp"
 #include <iostream>

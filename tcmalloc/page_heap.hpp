@@ -7,7 +7,6 @@
 #include "span.hpp"
 #include "page_map.hpp"
 #include <iostream>
-#include "spin_lock.hpp"
 
 namespace tcmalloc
 {
@@ -233,27 +232,6 @@ namespace tcmalloc
     }
 
   private:
-    struct SpanList
-    {
-      Span normal;
-      Span returned;
-    };
-    struct SmallSpanState
-    {
-      uint64_t normal;
-      uint64_t returned;
-    };
-
-    SpanList free_[kMaxPages];
-    SmallSpanState free_size_[kMaxPages];
-    SpanSet large_normal_;
-    SpanSet large_returned_;
-    State stat_;
-    uint16_t release_index_;
-    int release_rate_;
-    PageMap<PageIDBIT> page_map_;
-    std::mutex lock;
-
     void PrependToFreeList(Span *span)
     {
       assert(span->location != Span::IN_USE);
@@ -486,6 +464,28 @@ namespace tcmalloc
         }
       }
     }
+
+  private:
+    struct SpanList
+    {
+      Span normal;
+      Span returned;
+    };
+    struct SmallSpanState
+    {
+      uint64_t normal;
+      uint64_t returned;
+    };
+
+    SpanList free_[kMaxPages];
+    SmallSpanState free_size_[kMaxPages];
+    SpanSet large_normal_;
+    SpanSet large_returned_;
+    State stat_;
+    uint16_t release_index_;
+    int release_rate_;
+    PageMap<PageIDBIT> page_map_;
+    std::mutex lock;
   };
 
 }

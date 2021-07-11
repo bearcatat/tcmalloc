@@ -7,7 +7,6 @@
 #include <cstring>
 
 #include "config.hpp"
-#include "static_var.hpp"
 #include "page_heap_allocator.hpp"
 
 namespace tcmalloc
