@@ -1,21 +1,25 @@
 # tcmalloc
-参考gperftools实现的tcmalloc
+学习项目，参考gperftools实现的tcmalloc，有时间写一下关于tcmalloc的设计
 # 测试
 使用test中的speedtest的代码测试：
+## 环境
+- OS：Ubuntu 20.04 WSL
 
-thread: 40; 
+- 编译器：gcc9.3.0
 
-Object Type: Small Object;
+- thread: 40; 
 
-**TcMalloc**: 
+- Object Type: Small Object;
+## 结果
+### tcmalloc 
 
-The total time of malloc: 30.3419
+The total time of malloc: 30.34s
 
-The total time of free: 18.2506
+The total time of free: 18.25s
 
-**malloc**: 
+### malloc
 
-The total time of malloc: 91.2974
+The total time of malloc: 91.30s
 
-The total time of free: 12.4449
+The total time of free: 12.44s
 
