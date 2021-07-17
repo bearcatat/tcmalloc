@@ -1,5 +1,5 @@
 # tcmalloc
-学习项目，参考gperftools实现的tcmalloc，有时间写一下关于tcmalloc的设计
+学习项目，参考gperftools实现的tcmalloc，tcmalloc请看[wiki](https://github.com/bearcatat/tcmalloc/wiki)
 # 测试
 使用test中的speedtest的代码测试：
 ## 环境
